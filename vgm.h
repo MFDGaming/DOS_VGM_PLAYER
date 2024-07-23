@@ -1,0 +1,77 @@
+#ifndef VGM_H
+#define VGM_H
+
+typedef struct _vgm_header {
+    char vgm[4];
+    long eof_offset;
+    long version;
+    long sn76489_clock;
+    long ym2413_clock;
+    long gd3_offset;
+    long total_sample_count;
+    long loop_offset;
+    long loop_samples_count;
+    long rate;
+    short sn_fb;
+    unsigned char snw;
+    unsigned char sf;
+    long ym2612_clock;
+    long ym2151_clock;
+    long vgm_data_offset;
+    long sega_pcm_clock;
+    long spcm_longerface;
+    long rf5c68_clock;
+    long ym2203_clock;
+    long ym2608_clock;
+    long ym2610_clock;
+    long ym3812_clock;
+    long ym3526_clock;
+    long y8950_clock;
+    long ymf262_clock;
+    long ymf278b_clock;
+    long ymf271_clock;
+    long ymz280b_clock;
+    long rf5c164_clock;
+    long pwm_clock;
+    long ay8910_clock;
+    unsigned char ayt;
+    unsigned char ay_flags[3];
+    unsigned char vm;
+    unsigned char padding0;
+    unsigned char lb;
+    unsigned char lm;
+    long gb_dmg_clock;
+    long nes_apu_clock;
+    long multipcm_clock;
+    long upd7759_clock;
+    long okim6258_clock;
+    unsigned char of;
+    unsigned char kf;
+    unsigned char cf;
+    unsigned char padding1;
+    long okim6395_clock;
+    long k051649_clock;
+    long k054539_clock;
+    long huc6280_clock;
+    long c140_clock;
+    long k053260_clock;
+    long pokey_clock;
+    long qsound_clock;
+    long scsp_clock;
+    long extra_hdr_ofs;
+    long wonderswan_clock;
+    long vsu_clock;
+    long saa1099_clock;
+    long es5503_clock;
+    long es5506_clock;
+    short es_chns;
+    unsigned char cd;
+    unsigned char padding2;
+    long x1010_clock;
+    long c352_clock;
+    long ga20_clock;
+    long mikey_clock;
+    long padding3[6];
+} vgm_header_t;
+
+#endif

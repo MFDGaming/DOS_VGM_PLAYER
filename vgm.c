@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define VGM_DEBUG
 #define VGM_DOS
 
 #ifdef VGM_DOS
@@ -34,7 +33,7 @@ int main() {
     unsigned short samples = 0;
     unsigned char reg = 0;
     unsigned char reg_data = 0;
-    long i = 0;
+    unsigned long i = 0;
     unsigned char *data = NULL;
     unsigned char command = 0;
     unsigned char do_loop = 0;
@@ -81,17 +80,17 @@ int main() {
 #ifdef VGM_DEBUG
             printf("[L] WAIT for %u samples\n", samples);
 #endif
-            delay((long)(((float)samples / 44100) * 1000));
+            delay((unsigned long)(((double)samples / 44100.0) * 1000));
         } else if (command == 0x62) {
 #ifdef VGM_DEBUG
             printf("WAIT for 735 samples\n");
 #endif
-            delay((long)(((float)735 / 44100) * 1000));
+            delay((unsigned long)(((double)735 / 44100.0) * 1000));
         } else if (command == 0x63) {
 #ifdef VGM_DEBUG
             printf("WAIT for 882 samples\n");
 #endif
-            delay((long)(((float)882 / 44100) * 1000));
+            delay((unsigned long)(((double)882 / 44100.0) * 1000));
         } else if (command == 0x66) {
             printf("END OF SOUND DATA\n");
             if (header->loop_offset == 0 || do_loop >= 1) {
@@ -103,7 +102,7 @@ int main() {
 #ifdef VGM_DEBUG
             printf("[S] WAIT for %u samples\n", command & 0x0f);
 #endif
-            delay((long)((((float)(command & 0x0f)) / 44100) * 1000));
+            delay((unsigned long)((((double)(command & 0x0f)) / 44100.0) * 1000));
         } else {
             printf("UNKNOWN COMMAND\n");
         }

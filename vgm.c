@@ -2,8 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define VGM_DOS
-
 #ifdef VGM_DOS
 #include <dos.h>
 
@@ -57,7 +55,7 @@ int main() {
     
     for (i = header->vgm_data_offset + 52; i < header->eof_offset;) {
         command = data[i++];
-        if (command == 0x5E) {
+        if (command == 0x5E || command == 0x56) {
             reg = data[i++];
             reg_data = data[i++];
 
@@ -65,7 +63,7 @@ int main() {
             printf("[PORT0] REGISTER (%u) <- %u\n", reg, reg_data);
 #endif
             write_reg(0x388, reg, reg_data, 0);
-        } else if (command == 0x5F) {
+        } else if (command == 0x5F || command == 0x57) {
             reg = data[i++];
             reg_data = data[i++];
 #ifdef VGM_DEBUG
@@ -98,13 +96,14 @@ int main() {
             }
             i = header->loop_offset + 0x1c;
             do_loop = 1;
-        } else if (command >= 0x70 || command <= 0x7f) {
+        } else if (command >= 0x70 && command <= 0x7f) {
 #ifdef VGM_DEBUG
             printf("[S] WAIT for %u samples\n", command & 0x0f);
 #endif
             delay((unsigned long)((((double)(command & 0x0f)) / 44100.0) * 1000));
         } else {
-            printf("UNKNOWN COMMAND\n");
+            printf("UNKNOWN COMMAND %x\n", command);
+            return 0;
         }
     }
     if (data) {

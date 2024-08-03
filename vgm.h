@@ -1,6 +1,8 @@
 #ifndef VGM_H
 #define VGM_H
 
+#define VGM_DOS
+
 #ifdef VGM_DOS
 #define U8 unsigned char
 #define U16 unsigned short

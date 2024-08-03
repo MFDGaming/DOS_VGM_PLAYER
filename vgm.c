@@ -107,6 +107,9 @@ int main() {
             printf("UNKNOWN COMMAND\n");
         }
     }
+    if (data) {
+        free(data);
+    }
 
     return 0;
 }

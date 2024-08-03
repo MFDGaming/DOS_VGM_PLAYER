@@ -1,77 +1,88 @@
 #ifndef VGM_H
 #define VGM_H
 
+#ifdef VGM_DOS
+#define U8 unsigned char
+#define U16 unsigned short
+#define U32 unsigned long
+#else
+#include <stdint.h>
+#define U8 uint8_t
+#define U16 uint16_t
+#define U32 uint32_t
+#endif
+
 typedef struct _vgm_header {
-    char vgm[4];
-    unsigned long eof_offset;
-    unsigned long version;
-    unsigned long sn76489_clock;
-    unsigned long ym2413_clock;
-    unsigned long gd3_offset;
-    unsigned long total_sample_count;
-    unsigned long loop_offset;
-    unsigned long loop_samples_count;
-    unsigned long rate;
-    unsigned short sn_fb;
-    unsigned char snw;
-    unsigned char sf;
-    unsigned long ym2612_clock;
-    unsigned long ym2151_clock;
-    unsigned long vgm_data_offset;
-    unsigned long sega_pcm_clock;
-    unsigned long spcm_longerface;
-    unsigned long rf5c68_clock;
-    unsigned long ym2203_clock;
-    unsigned long ym2608_clock;
-    unsigned long ym2610_clock;
-    unsigned long ym3812_clock;
-    unsigned long ym3526_clock;
-    unsigned long y8950_clock;
-    unsigned long ymf262_clock;
-    unsigned long ymf278b_clock;
-    unsigned long ymf271_clock;
-    unsigned long ymz280b_clock;
-    unsigned long rf5c164_clock;
-    unsigned long pwm_clock;
-    unsigned long ay8910_clock;
-    unsigned char ayt;
-    unsigned char ay_flags[3];
-    unsigned char vm;
-    unsigned char padding0;
-    unsigned char lb;
-    unsigned char lm;
-    unsigned long gb_dmg_clock;
-    unsigned long nes_apu_clock;
-    unsigned long multipcm_clock;
-    unsigned long upd7759_clock;
-    unsigned long okim6258_clock;
-    unsigned char of;
-    unsigned char kf;
-    unsigned char cf;
-    unsigned char padding1;
-    unsigned long okim6395_clock;
-    unsigned long k051649_clock;
-    unsigned long k054539_clock;
-    unsigned long huc6280_clock;
-    unsigned long c140_clock;
-    unsigned long k053260_clock;
-    unsigned long pokey_clock;
-    unsigned long qsound_clock;
-    unsigned long scsp_clock;
-    unsigned long extra_hdr_ofs;
-    unsigned long wonderswan_clock;
-    unsigned long vsu_clock;
-    unsigned long saa1099_clock;
-    unsigned long es5503_clock;
-    unsigned long es5506_clock;
-    unsigned short es_chns;
-    unsigned char cd;
-    unsigned char padding2;
-    unsigned long x1010_clock;
-    unsigned long c352_clock;
-    unsigned long ga20_clock;
-    unsigned long mikey_clock;
-    unsigned long padding3[6];
+    U8 vgm[4];
+    U32 eof_offset;
+    U32 version;
+    U32 sn76489_clock;
+    U32 ym2413_clock;
+    U32 gd3_offset;
+    U32 total_sample_count;
+    U32 loop_offset;
+    U32 loop_samples_count;
+    U32 rate;
+    U16 sn_fb;
+    U8 snw;
+    U8 sf;
+    U32 ym2612_clock;
+    U32 ym2151_clock;
+    U32 vgm_data_offset;
+    U32 sega_pcm_clock;
+    U32 spcm_longerface;
+    U32 rf5c68_clock;
+    U32 ym2203_clock;
+    U32 ym2608_clock;
+    U32 ym2610_clock;
+    U32 ym3812_clock;
+    U32 ym3526_clock;
+    U32 y8950_clock;
+    U32 ymf262_clock;
+    U32 ymf278b_clock;
+    U32 ymf271_clock;
+    U32 ymz280b_clock;
+    U32 rf5c164_clock;
+    U32 pwm_clock;
+    U32 ay8910_clock;
+    U8 ayt;
+    U8 ay_flags[3];
+    U8 vm;
+    U8 padding0;
+    U8 lb;
+    U8 lm;
+    U32 gb_dmg_clock;
+    U32 nes_apu_clock;
+    U32 multipcm_clock;
+    U32 upd7759_clock;
+    U32 okim6258_clock;
+    U8 of;
+    U8 kf;
+    U8 cf;
+    U8 padding1;
+    U32 okim6395_clock;
+    U32 k051649_clock;
+    U32 k054539_clock;
+    U32 huc6280_clock;
+    U32 c140_clock;
+    U32 k053260_clock;
+    U32 pokey_clock;
+    U32 qsound_clock;
+    U32 scsp_clock;
+    U32 extra_hdr_ofs;
+    U32 wonderswan_clock;
+    U32 vsu_clock;
+    U32 saa1099_clock;
+    U32 es5503_clock;
+    U32 es5506_clock;
+    U16 es_chns;
+    U8 cd;
+    U8 padding2;
+    U32 x1010_clock;
+    U32 c352_clock;
+    U32 ga20_clock;
+    U32 mikey_clock;
+    U32 padding3[6];
 } vgm_header_t;
 
 #endif
